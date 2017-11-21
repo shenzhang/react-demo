@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
 import './App.css';
+import Framework from './layout/Framework.jsx'
+import Calc from './calc/Calc'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Button type="primary">Button</Button>
-      </div>
+      // <Framework />
+      <Calc />
     );
   }
 }
