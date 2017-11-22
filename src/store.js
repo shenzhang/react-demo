@@ -1,9 +1,9 @@
 import { createStore } from 'redux'
-import testApp from './calc/reducers'
+import { reducer } from './components/demo'
 
-let store = createStore(testApp);
+let store = createStore(reducer);
 
-let unsubscrib = store.subscribe(() => {
+store.subscribe(() => {
     console.log(store.getState());
 });
 

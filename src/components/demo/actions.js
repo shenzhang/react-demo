@@ -1,18 +1,18 @@
-export const actionTypes = {
+export const ActionTypes = {
     INCREASE: 'increase',
     DECREASE: 'decrease'
 }
 
 export function increase(value = 1) {
     return {
-        type: actionTypes.INCREASE,
+        type: ActionTypes.INCREASE,
         value
     };
 }
 
 export function decrease(value = 1) {
     return {
-        type: actionTypes.DECREASE,
+        type: ActionTypes.DECREASE,
         value
     };
 }

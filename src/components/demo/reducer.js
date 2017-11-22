@@ -1,13 +1,13 @@
-import { combineReducers } from 'redux'
-import { actionTypes } from './actions'
+// import { combineReducers } from 'redux'
+import { ActionTypes } from './actions'
 
 export default function (state = { value: 0 }, action) {
     switch (action.type) {
-        case actionTypes.INCREASE:
+        case ActionTypes.INCREASE:
             return {
                 value: state.value + action.value
             };
-        case actionTypes.DECREASE:
+        case ActionTypes.DECREASE:
             return {
                 value: state.value - action.value
             };
