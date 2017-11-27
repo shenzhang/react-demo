@@ -6,6 +6,7 @@ export const loadCustomer = (customerId) => {
   return (dispatch) => {
     const action = {
       type: Actions.LOAD_CUSTOMER,
+      loading: true,
       customerId
     };
     dispatch(action);
@@ -17,7 +18,7 @@ export const loadCustomer = (customerId) => {
       .then(json => {
         const action = {
           type: Actions.LOAD_CUSTOMER,
-          success: true,
+          loading: false,
           customer: json.data
         };
         dispatch(action);

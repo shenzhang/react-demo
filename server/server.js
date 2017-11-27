@@ -1,5 +1,9 @@
 const express = require('express');
 const fs = require('fs');
+const sleep = require('sleep')
+const morgan = require('morgan')
+
+const stubData = require('./stub-data')
 
 const app = express();
 
@@ -10,40 +14,30 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('../client/build'));
 }
 
-const data = {
-    data: [
-        {
-            id: '123',
-            brand: '阿迪达斯',
-            name: 'ZHANG San',
-            age: 32,
-            address: 'Chengdu, Sichuan, China'
-        },
-        {
-            id: '456',
-            brand: '耐克',
-            name: 'LI Si',
-            age: 33,
-            address: 'Chengdu, Sichuan, China'
-        }
-    ]
-};
+app.use(morgan('combined'));
 
-app.get('/api/customers', (req, res) => {
-    // const param = req.query.q;
+app.use('/api/*', (req, res, next) => {
+    sleep.sleep(1);
+    res.header('Content-Type', 'application/json; charset=utf-8');
 
-    // if (!param) {
-    //     res.json({
-    //         error: 'Missing required parameter `q`',
-    //     });
-    //     return;
-    // }
-
-    res.json(data);
+    next();
 });
 
-app.get('/api/brands/{brand}/customers', (req, res) => {
-    res.json(data);
+app.get('/api/customers', (req, res) => {
+    res.json({
+        data: stubData.customers
+    });
+});
+
+app.get('/api/customers/:id', (req, res) => {
+    const id = req.params.id;
+    const customers = stubData.customers.filter(customer => customer.id === id);
+
+    if (customers.length == 0) {
+        res.status(404).end();
+    } else {
+        res.json({ data: customers[0] });
+    }
 });
 
 app.listen(app.get('port'), () => {
