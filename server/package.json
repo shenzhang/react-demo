@@ -1,0 +1,16 @@
+{
+  "name": "react-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Shen",
+  "license": "MIT",
+  "private": true,
+
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+
+  "scripts": {
+    "start": "node server.js"
+  }
+}

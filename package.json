@@ -1,0 +1,18 @@
+{
+  "name": "react-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "shenzhang <shenzhang722@qq.com>",
+  "license": "MIT",
+  "private": true,
+
+  "devDependencies": {
+    "concurrently": "^3.5.1"
+  },
+
+  "scripts": {
+    "start": "concurrently \"yarn server\" \"yarn client\"",
+    "client": "cd client && yarn start",
+    "server": "cd server && yarn start"
+  }
+}

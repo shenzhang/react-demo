@@ -1,10 +1,18 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise'
-import { reducer } from './components/demo'
+
+// reducers
+import selectedBrand from './components/brand/reducer'
+import searchByPolicy from './components/search/reducer'
+
+const reducer = combineReducers({ 
+  selectedBrand,
+  searchByPolicy
+});
 
 const logger = createLogger();
-const store = createStore(reducer, applyMiddleware(promise, thunk, logger));
-
-export default store;
+export default createStore(reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(promise, thunk, logger));
