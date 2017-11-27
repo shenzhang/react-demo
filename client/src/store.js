@@ -6,10 +6,12 @@ import promise from 'redux-promise'
 // reducers
 import selectedBrand from './components/brand/reducer'
 import searchByPolicy from './components/search/reducer'
+import customerProfile from './components/profile/reducer'
 
 const reducer = combineReducers({ 
   selectedBrand,
-  searchByPolicy
+  searchByPolicy,
+  customerProfile
 });
 
 const logger = createLogger();

@@ -24,6 +24,8 @@ class SearchByPolicyTab extends React.Component {
           </Col>
         </Row>
 
+        <hr style={{marginTop: 20, marginBottom: 20}} />
+
         <Row gutter={40}>
           <Col span={24}>
             <SearchResultTable customers={this.props.customers}/>
@@ -35,7 +37,7 @@ class SearchByPolicyTab extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { customers: state.customers };
+  return { customers: state.searchByPolicy.customers };
 };
 
 const mapDisptachToProps = (dispatch, ownProps) => {
