@@ -28,7 +28,7 @@ class SearchByPolicyTab extends React.Component {
 
         <Row gutter={40}>
           <Col span={24}>
-            <SearchResultTable customers={this.props.customers}/>
+            <SearchResultTable customers={this.props.customers} loading={this.props.loading}/>
           </Col>
         </Row>
       </Form>

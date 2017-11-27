@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Table, Icon } from 'antd';
+import { Table, Icon, Spin } from 'antd';
 
 const columns = [{
   title: 'ID',
@@ -20,14 +20,16 @@ const columns = [{
 
 class SearchResultTable extends React.Component {
   render() {
-    return <Table columns={columns} dataSource={this.props.customers} rowKey="id" />;
+    const loading = this.props.loading;
+
+    return (
+      <Table columns={columns} dataSource={this.props.customers} rowKey="id" />
+    );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-    customers: ownProps.customers
-  };
+  return ownProps;
 };
 
 export default connect(mapStateToProps)(SearchResultTable);

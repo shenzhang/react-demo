@@ -6,6 +6,7 @@ export const searchByPolicy = (policyNumber) => {
   return (dispatch) => {
     const action = {
       type: Actions.SEARCH_BY_POLICY,
+      loading: true,
       policyNumber
     };
     dispatch(action);
@@ -17,7 +18,7 @@ export const searchByPolicy = (policyNumber) => {
       .then(json => {
         const action = {
           type: Actions.SEARCH_BY_POLICY,
-          success: true,
+          loading: false,
           customers: json.data
         };
         dispatch(action);
