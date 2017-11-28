@@ -1,4 +1,6 @@
 const morgan = require('morgan')
+const responseTime = require('response-time')
+const errorHandler = require('api-error-handler')
 const sleep = require('sleep')
 
 module.exports = (app) => {
@@ -7,7 +9,9 @@ module.exports = (app) => {
     app.use(express.static('../client/build'));
   }
 
+  app.use(responseTime());
   app.use(morgan('combined'));
+  app.use(errorHandler());
 
   app.use('/api/*', (req, res, next) => {
     sleep.sleep(1);

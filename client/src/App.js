@@ -1,10 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux'
-import store from '../store'
 import { Layout } from 'antd';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import CustomerSearchPage from './search/CustomerSearchPage'
-import CustomerProfilePage from './profile/CustomerProfilePage'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import store from './store'
+import NotFoundPage from './page/404/NotFoundPage'
+import CustomerSearchPage from './components/search/CustomerSearchPage'
+import CustomerProfilePage from './components/profile/CustomerProfilePage'
 
 // css
 import './App.css';
@@ -23,10 +24,12 @@ class App extends React.Component {
 
           <Content style={{ paddingTop: 20, paddingLeft: 20 }}>
             <Router>
-              <div>
-                <Route exact path="/" component={CustomerSearchPage} />
+              <Switch>
+                <Route exact path="/" render={() => (<Redirect to="/customers" />)} />
+                <Route exact path="/customers" component={CustomerSearchPage} />
                 <Route path="/customers/:id" component={CustomerProfilePage} />
-              </div>
+                <Route component={NotFoundPage} />
+              </Switch>
             </Router>
           </Content>
         </Layout>
