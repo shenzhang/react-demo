@@ -4,9 +4,9 @@ import thunk from 'redux-thunk'
 import promise from 'redux-promise'
 
 // reducers
-import selectedBrand from './components/brand/reducer'
-import searchByPolicy from './components/search/reducer'
-import customerProfile from './components/profile/reducer'
+import selectedBrand from './components/brand/actions'
+import searchByPolicy from './components/search/actions'
+import customerProfile from './components/profile/actions'
 
 const reducer = combineReducers({ 
   selectedBrand,

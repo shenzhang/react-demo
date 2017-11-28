@@ -1,27 +1,31 @@
+import { createAction, handleAction } from 'redux-actions'
+
 export const Actions = {
   SEARCH_BY_POLICY: 'search/search_by_policy',
 };
 
+const actionSearchByPolicy = createAction(Actions.SEARCH_BY_POLICY);
+
+// reducer
+export default handleAction(actionSearchByPolicy, (state, action) => action.payload, {});
+
+// thunk
 export const searchByPolicy = (policyNumber) => {
   return (dispatch) => {
-    const action = {
-      type: Actions.SEARCH_BY_POLICY,
-      loading: true,
+    dispatch(actionSearchByPolicy({
+      laoding: true,
       policyNumber
-    };
-    dispatch(action);
+    }));
 
     fetch('/api/customers')
       .then(response => {
         return response.json();
       })
       .then(json => {
-        const action = {
-          type: Actions.SEARCH_BY_POLICY,
+        dispatch(actionSearchByPolicy({
           loading: false,
           customers: json.data
-        };
-        dispatch(action);
+        }));
       });
   }
 };

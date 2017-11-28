@@ -10,15 +10,19 @@ const brands = [
 ];
 
 class BrandSelect extends React.Component {
+	componentDidMount() {
+		this.props.changeBrand(brands[0]);
+	}
+
 	render() {
 		return (
 			<div style={{ display: 'inline-block' }}>
 				<span>品 牌:</span>
 				&nbsp;
-				<Select style={{ width: 120 }} defaultValue={this.props.selected} onChange={this.props.changeBrand}>
-				{
-					brands.map(brand => <Select.Option key={brand} value={brand}>{brand}</Select.Option>)
-				}
+				<Select style={{ width: 120 }} value={this.props.selected} onChange={this.props.changeBrand}>
+					{
+						brands.map(brand => <Select.Option key={brand} value={brand}>{brand}</Select.Option>)
+					}
 				</Select>
 			</div>
 		);
@@ -27,7 +31,7 @@ class BrandSelect extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		selected: state.selectedBrand ? state.selectedBrand : brands[0]
+		selected: state.selectedBrand
 	}
 };
 
