@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Table, Icon, Spin } from 'antd';
+import { withRouter } from 'react-router'
 
 const columns = [{
   title: 'ID',
@@ -32,4 +33,4 @@ const mapStateToProps = (state, ownProps) => {
   return ownProps;
 };
 
-export default connect(mapStateToProps)(SearchResultTable);
+export default withRouter(connect(mapStateToProps)(SearchResultTable));

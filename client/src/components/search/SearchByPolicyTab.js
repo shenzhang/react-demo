@@ -5,12 +5,6 @@ import { searchByPolicy } from './actions'
 import SearchResultTable from './SearchResultTable'
 
 class SearchByPolicyTab extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleSearch = this.handleSearch.bind(this);
-  }
-
   handleSearch = () => {
     this.props.onSearch('ABC123');
   }
