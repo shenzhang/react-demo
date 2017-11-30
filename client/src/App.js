@@ -3,6 +3,8 @@ import { Provider } from 'react-redux'
 import { Layout } from 'antd';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import store from './store'
+
+import Menu from './components/layout/Menu'
 import NotFoundPage from './page/404/NotFoundPage'
 import CustomerSearchPage from './components/search/CustomerSearchPage'
 import CustomerProfilePage from './components/profile/CustomerProfilePage'
@@ -11,28 +13,39 @@ import CustomerProfilePage from './components/profile/CustomerProfilePage'
 import './App.css';
 
 
-const { Header, Content } = Layout;
+const { Header, Sider: AntdSider, Content } = Layout;
 
 class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Layout>
-          <Header style={{ backgroundColor: 'white' }}>
-            <div>太阳公司客户信息平台</div>
-          </Header>
+        <Router>
+          <Layout style={{ height: "100vh" }}>
+            <Header style={{ color: 'white', fontSize: 16 }}>
+              <div>宇宙保险公司客户信息平台</div>
+            </Header>
 
-          <Content style={{ paddingTop: 20, paddingLeft: 20 }}>
-            <Router>
-              <Switch>
-                <Redirect exact from="/" to="/customers" />
-                <Route exact path="/customers" component={CustomerSearchPage} />
-                <Route path="/customers/:id" component={CustomerProfilePage} />
-                <Route component={NotFoundPage} />
-              </Switch>
-            </Router>
-          </Content>
-        </Layout>
+            <Layout>
+              <AntdSider>
+                <Menu />
+              </AntdSider>
+
+              <Layout style={{ paddingLeft: '24px' }}>
+                <Content style={{ paddingTop: 20 }}>
+
+                  <Switch>
+                    <Redirect exact from="/" to="/customers" />
+                    <Route exact path="/customers" component={CustomerSearchPage} />
+                    <Route path="/customers/:id" component={CustomerProfilePage} />
+                    <Route component={NotFoundPage} />
+                  </Switch>
+
+                </Content>
+              </Layout>
+            </Layout>
+
+          </Layout>
+        </Router>
       </Provider>
     );
   }

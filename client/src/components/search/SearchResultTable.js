@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Table, Icon, Spin } from 'antd';
+import { Table } from 'antd';
 import { withRouter } from 'react-router'
 
 const columns = [{
@@ -21,8 +21,6 @@ const columns = [{
 
 class SearchResultTable extends React.Component {
   render() {
-    const loading = this.props.loading;
-
     return (
       <Table columns={columns} dataSource={this.props.customers} rowKey="id" />
     );

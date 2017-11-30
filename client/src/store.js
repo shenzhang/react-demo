@@ -5,10 +5,12 @@ import promise from 'redux-promise'
 
 // reducers
 import selectedBrand from './components/brand/actions'
+import layout from './components/layout/actions'
 import searchByPolicy from './components/search/actions'
 import customerProfile from './components/profile/actions'
 
 const reducer = combineReducers({ 
+  layout,
   selectedBrand,
   searchByPolicy,
   customerProfile
@@ -17,4 +19,4 @@ const reducer = combineReducers({
 const logger = createLogger();
 export default createStore(reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(promise, thunk, logger));
+  applyMiddleware(promise, thunk/*, logger */));
