@@ -22,7 +22,7 @@ class App extends React.Component {
         <Router>
           <Layout style={{ height: "100vh" }}>
             <Header style={{ color: 'white', fontSize: 16 }}>
-              <div>宇宙保险公司客户信息平台</div>
+              <div>保险公司客户信息平台</div>
             </Header>
 
             <Layout>
